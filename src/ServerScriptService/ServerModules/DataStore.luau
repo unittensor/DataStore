@@ -37,11 +37,13 @@ OnUpdate 					30 		30 			5 					1 * (30 + N * 5)
 UpdateAsync 				100 	60 			40 					3 * (60 + N * 40)
 --]]
 
-local REQUEST_GUARANTEE_NOTHING=0
-local REQUEST_GUARANTEE_ORDER=1
-local REQUEST_GUARANTEE_DELIVERY=2
+local REQUEST_GUARANTEE_NOTHING:  number =0
+local REQUEST_GUARANTEE_ORDER:    number =1
+local REQUEST_GUARANTEE_DELIVERY: number =2
 
-local RequestFlags={
+type Array<K,V> = {[K]: V}
+
+local RequestFlags: Array<string, number> = {
 	REQUEST_GUARANTEE_NOTHING=REQUEST_GUARANTEE_NOTHING,
 	REQUEST_GUARANTEE_ORDER=REQUEST_GUARANTEE_ORDER,
 	REQUEST_GUARANTEE_DELIVERY=REQUEST_GUARANTEE_DELIVERY,
@@ -49,7 +51,7 @@ local RequestFlags={
 
 --DataStoreRequestType
 --This list informs how many independently ratelimited request lanes there are
-local RequestTypes={
+local RequestTypes: {string} = {
 --Normal queries
 	"GetAsync",
 	"SetIncrementAsync",
